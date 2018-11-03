@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
 
   console.log(req);
-  res.send('test');
+  res.send('OK');
 
 });
 
