@@ -46,8 +46,51 @@ function extractPuzzle(str){
 }
 
 /*
-	TODO
-		high level explanation
+
+@param puzzle - 2D array representing the grid puzzle
+ex: 
+		= - - -
+		> - - -
+		- > - -
+		< - - - 
+
+@return a string containg the solved puzzle for sending as response
+ex: 
+	"ABCD\nA=<<>\nB>=<>\nC>>=>\nD<<<="		
+
+
+Solving the puzzle takes 4 steps
+
+Step 1 - You are given 4 values, each at position x,y
+		 For each value except '=' swap the x,y indexes and for that new position set its value
+		 to the opposite sign. 
+		= < - >
+		> - < -
+		- > - -
+		< - - -
+
+Step 2 - The values for any position where x = y, will always be '='
+		= < - >
+		> = < -
+		- > = -
+		< - - =	
+
+Step 3 - For each row take the initial value that was given at the start of the puzzle
+		 and fill the remaining empty positions with said value for the corresponding row.
+		 If the initial value for a row is '=' skip that row.
+		= < - >
+		> = < >
+		> > = >
+		< < < =	
+
+Step 4 - There should only be 1 empty position A at x,y
+		 Swap the x,y indexes and for that new position take its value and fill in the 
+		 the original empty position with the opposite operator.
+		= < < >
+		> = < >
+		> > = >
+		< < < =			 
+
 */
 function solvePuzzle(puzzle){
 	//console.log(puzzle);
